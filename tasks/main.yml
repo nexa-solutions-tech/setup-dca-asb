@@ -1,0 +1,12 @@
+---
+- name: Valida estrutura do projeto consumidor
+  ansible.builtin.include_tasks: validate.yml
+
+- name: Instala Docker Engine
+  ansible.builtin.include_tasks: docker-install.yml
+
+- name: Sobe stack da aplicação (Traefik + DB + App)
+  ansible.builtin.include_tasks: app-stack.yml
+
+- name: Sobe stack de observabilidade (Grafana + Loki + Promtail + Prometheus)
+  ansible.builtin.include_tasks: observability.yml

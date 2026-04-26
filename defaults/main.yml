@@ -1,0 +1,18 @@
+---
+# Diretório de destino no servidor onde os arquivos serão copiados
+app_dir: /opt/app
+
+# Arquitetura do servidor (mude para arm64 se necessário)
+docker_arch: amd64
+
+# Diretório local do projeto consumidor contendo os artefatos Docker da aplicação
+setup_dca_local_docker_dir: "{{ playbook_dir }}/../docker"
+
+# Arquivos mínimos esperados no projeto consumidor
+setup_dca_required_docker_files:
+  - docker-compose.yml
+  - .env
+  - obs.env
+  - loki-config.yml
+  - prometheus.yml
+  - promtail-config.yml

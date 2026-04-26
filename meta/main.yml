@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: mk-infra
+  namespace: mk_infra
+  role_name: setup_dca
+  description: Instala Docker e sobe a stack completa da aplicacao DCA
+  license: MIT
+  min_ansible_version: "2.15"
+  platforms:
+    - name: Ubuntu
+      versions:
+        - jammy
+        - noble
+
+dependencies: []

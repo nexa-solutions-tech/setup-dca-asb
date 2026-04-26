@@ -1,0 +1,16 @@
+---
+- name: Verifica arquivos obrigatorios do projeto consumidor
+  ansible.builtin.stat:
+    path: "{{ setup_dca_local_docker_dir }}/{{ item }}"
+  delegate_to: localhost
+  become: false
+  register: setup_dca_required_files_status
+  loop: "{{ setup_dca_required_docker_files }}"
+
+- name: Falha quando faltam arquivos obrigatorios
+  ansible.builtin.assert:
+    that:
+      - item.stat.exists
+    fail_msg: "Arquivo obrigatorio ausente: {{ item.stat.path }}"
+    success_msg: "Arquivo encontrado: {{ item.stat.path }}"
+  loop: "{{ setup_dca_required_files_status.results }}"

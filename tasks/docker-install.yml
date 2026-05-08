@@ -5,7 +5,7 @@
 
 - name: Mostra distribuição do servidor
   ansible.builtin.debug:
-    msg: "{{ ansible_distribution_release }}"
+    msg: "{{ ansible_facts['distribution_release'] }}"
 
 - name: Instala dependências para Docker
   ansible.builtin.apt:
@@ -47,7 +47,7 @@
   ansible.builtin.apt_repository:
     repo: >-
       deb [arch={{ docker_arch }} signed-by=/etc/apt/keyrings/docker.gpg]
-      https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+      https://download.docker.com/linux/ubuntu {{ ansible_facts['distribution_release'] }} stable
     state: present
 
 - name: Atualiza cache do apt após adicionar repo Docker

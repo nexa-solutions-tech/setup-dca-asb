@@ -21,4 +21,5 @@
       - database
       - backend
       - frontend
+      - landing-page
     recreate: auto
